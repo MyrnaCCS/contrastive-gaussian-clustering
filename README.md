@@ -2,9 +2,8 @@
 
 This repository contains the implementation associated with the paper "Contrastive Gaussian Clustering: Weakly Supervised 3D Scene Segmentation", click in the next link for more details.
 
->[**Contrastive Gaussian Clustering: Weakly Supervised 3D Scene Segmentation**](https://arxiv.org/abs/2404.12784)>
->Myrna C. Silva, Mahtab Dahaghin, Matteo Toso,  Alessio Del Bue
->
+>[**Contrastive Gaussian Clustering: Weakly Supervised 3D Scene Segmentation**](https://arxiv.org/abs/2404.12784)<br />
+>Myrna C. Silva, Mahtab Dahaghin, Matteo Toso,  Alessio Del Bue<br />
 >Istituto Italiano di Tecnologia - IIT
 
 <img  width="1000"  alt="image"  src='assets/teaser_github.png'>
