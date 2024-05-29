@@ -131,3 +131,17 @@ def safe_state(silent):
     np.random.seed(0)
     torch.manual_seed(0)
     torch.cuda.set_device(torch.device("cuda:0"))
+
+def get_unique_id_list(segmask, min_pixnum):
+    id_unique_list, n_i_list_ = torch.unique(segmask, return_counts=True)
+
+    # Remove id 0 (related to borders)        
+    if id_unique_list[0] == 0:
+        id_unique_list = id_unique_list[1:]
+        n_i_list_ = n_i_list_[1:]
+    
+    # Remove small clusters
+    id_unique_list = id_unique_list[n_i_list_ > min_pixnum]
+    n_i_list = n_i_list_[n_i_list_ > min_pixnum]
+
+    return id_unique_list, n_i_list
