@@ -103,7 +103,7 @@ def training(dataset, opt, pipe, testing_iterations, saving_iterations, checkpoi
         # Spatial-similarity Loss
         if iteration % opt.spatial_similarity_interval == 0:
             features3d = gaussians._seg_features
-            loss_obj_3d = spatial_loss(gaussians._xyz.squeeze().detach().clone(), features3d, k_pull=opt.k_pull, k_push=opt.k_push, lambda_pull=opt.lambda_pull, lambda_push=opt.lambda_push, max_points=opt.reg3d_max_points, sample_size=opt.reg3d_sample_size)
+            loss_obj_3d = spatial_loss(gaussians._xyz.squeeze().detach().clone(), features3d, k_pull=opt.k_pull, k_push=opt.k_push, lambda_pull=opt.lambda_pull, lambda_push=opt.lambda_push, max_points=opt.reg_max_points, sample_size=opt.reg_sample_size)
             loss += loss_obj_3d
         
         loss.backward()

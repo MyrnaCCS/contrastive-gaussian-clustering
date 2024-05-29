@@ -89,7 +89,7 @@ class OptimizationParams(ParamGroup):
         self.densify_until_iter = 15_000
         self.densify_grad_threshold = 0.0002
         self.random_background = False
-        self.contrastive_interval = 5
+        self.contrastive_interval = 50
         self.contrastive_lambda = 1e-6
         self.min_pixnum = 100
         self.spatial_similarity_interval = 100
@@ -97,6 +97,8 @@ class OptimizationParams(ParamGroup):
         self.k_push = 5
         self.lambda_pull = 0.05
         self.lambda_push = 0.15
+        self.reg_max_points = 300000
+        self.reg_sample_size = 1000
         super().__init__(parser, "Optimization Parameters")
 
 def get_combined_args(parser : ArgumentParser):
