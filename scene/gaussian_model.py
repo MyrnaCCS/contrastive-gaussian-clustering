@@ -198,7 +198,7 @@ class GaussianModel:
             l.append('scale_{}'.format(i))
         for i in range(self._rotation.shape[1]):
             l.append('rot_{}'.format(i))
-        for i in range(self._seg_features[2]):
+        for i in range(self._seg_features.shape[2]):
             l.append('f_seg_{}'.format(i))
         return l
 

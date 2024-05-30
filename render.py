@@ -24,6 +24,7 @@ from sklearn.decomposition import PCA
 import numpy as np
 from PIL import Image
 
+
 def feature_to_rgb(features):
     # Input features shape: (16, H, W)
     features = features / (torch.norm(features, dim=-1, keepdim=True) + 1e-9)
@@ -47,13 +48,13 @@ def feature_to_rgb(features):
     return rgb_array
 
 def show_masks(segmasks):
-    img = np.zeros((segmasks.shape, 3), dtype=np.uint8)
+    img = np.zeros((segmasks.shape[0], segmasks.shape[1], 3))
 
     for mask_id in np.unique(segmasks):
         if mask_id:
-            img[segmasks == id] = np.random.random(3)
+            img[segmasks == mask_id] = 255 * np.random.random(3)
     
-    return img
+    return img.astype('uint8')
 
 
 def render_set(model_path, name, iteration, views, gaussians, pipeline, background):
@@ -79,7 +80,7 @@ def render_set(model_path, name, iteration, views, gaussians, pipeline, backgrou
         rendering_features_rgb = feature_to_rgb(rendering_features)
 
         # Show all the masks on the image
-        gt_seg_rgb = show_masks(gt_seg)
+        gt_seg_rgb = show_masks(gt_seg.cpu().numpy().astype(np.uint8))
         
         torchvision.utils.save_image(rendering, os.path.join(render_path, '{0:05d}'.format(idx) + ".png"))
         torchvision.utils.save_image(gt, os.path.join(gts_path, '{0:05d}'.format(idx) + ".png"))
